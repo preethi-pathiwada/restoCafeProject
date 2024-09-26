@@ -1,0 +1,48 @@
+.tab-item-active {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #f58142;
+}
+
+.tab-item-inactive {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #000000;
+}
+
+.button-active {
+  background-color: transparent;
+  border-width: 0px 0px 4px 0px;
+  border-style: solid;
+  border-color: #f58142;
+  padding-bottom: 24px;
+  margin-right: 20px;
+  min-width: 170px;
+
+  cursor: pointer;
+}
+
+.button-inactive {
+  background-color: transparent;
+  border: none;
+  padding-bottom: 24px;
+  margin-right: 20px;
+  min-width: 170px;
+
+  cursor: pointer;
+}
+
+@media all and (min-width: 768px) {
+  .tab-item-active {
+    font-size: 20px;
+  }
+  .tab-item-inactive {
+    font-size: 20px;
+  }
+  .button-inactive {
+    min-width: 220px;
+  }
+  .button-active {
+    min-width: 220px;
+  }
+}
