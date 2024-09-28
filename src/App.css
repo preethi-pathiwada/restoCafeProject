@@ -12,7 +12,7 @@ body {
 }
 
 .navbar-bg {
-  width: 100vw;
+  
   padding: 0px 18px 0px 18px;
   display: flex;
   justify-content: space-between;
@@ -21,10 +21,12 @@ body {
 
 .tabs-container {
   list-style-type: none;
-  padding: 15px 15px 0px 15px;
+  padding-left: 0px;
+  margin: 0px 0px 0px 0px;
   box-shadow: 0px 0px 1px 0px #a9a6a6;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   overflow-x: scroll;
 }
 
@@ -41,7 +43,7 @@ body {
 
 .orders-container {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
 }
 .order-count {
@@ -75,12 +77,23 @@ body {
     display: flex;
   }
 
-  .cart-icon{
+  .cart-icon {
     font-size: 40px;
   }
 
-  .order-count-con{
-    top:13px;
-    left:25px;
+  .order-count-con {
+    top: 13px;
+    left: 25px;
+  }
+  .dishes-container {
+    margin: 15px 25px 15px 25px;
+  }
+
+  .navbar-bg{
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+
+  .tabs-container {
   }
 }

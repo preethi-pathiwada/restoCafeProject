@@ -18,7 +18,7 @@ const dishes = [
       'Fresh spinach, mushrooms, and hard-boiled egg served with warm bacon vinaigrette',
     dishAvailability: true,
     dishType: 2,
-
+    count: 0,
     addonCat: [
       {
         addonCategory: 'Spicy/Non-Spicy',
@@ -70,6 +70,7 @@ const dishes = [
     dishDescription: 'with clams, scallops, and shrimp,',
     dishAvailability: true,
     dishType: 1,
+    count: 0,
     addonCat: [],
   },
   {
@@ -82,6 +83,7 @@ const dishes = [
     dishDescription: 'Flour Mixed with fresh green leafy vegetables',
     dishAvailability: true,
     dishType: 2,
+    count: 0,
     addonCat: [],
   },
   {
@@ -94,6 +96,7 @@ const dishes = [
     dishDescription: 'fresh as home-made chicken-soup',
     dishAvailability: false,
     dishType: 1,
+    count: 0,
     addonCat: [],
   },
   {
@@ -106,6 +109,7 @@ const dishes = [
     dishDescription: 'One-Pot-Vegetarian-Orzo-Vegetable-Soup',
     dishAvailability: false,
     dishType: 1,
+    count: 0,
     addonCat: [],
   },
   {
@@ -119,6 +123,7 @@ const dishes = [
       'wholesomeyum_low-carb-chicken-soup-with-spaghetti-squash-paleo-gluten-free.jpg',
     dishAvailability: false,
     dishType: 1,
+    count: 0,
     addonCat: [],
   },
 ]
@@ -131,7 +136,7 @@ class App extends Component {
     dishesArr: dishes,
     count: 0,
     id: 0,
-    idCount: 0,
+    filteredObj: {},
   }
 
   componentDidMount() {
@@ -182,6 +187,7 @@ class App extends Component {
           dishImage: obj.dish_image,
           dishName: obj.dish_name,
           dishPrice: obj.dish_price,
+          count: 0,
           addonCat: this.getAddOns(obj.addonCat),
         })),
       })),
@@ -200,15 +206,36 @@ class App extends Component {
     this.setState({categoryId: id, dishesArr: array})
   }
 
-  addItem = dishId => {
-    console.log(dishId)
-    this.setState(prevState => ({count: prevState.count + 1, id: dishId}))
+  addItem = id => {
+    const {dishesArr} = this.state
+    const arr = dishesArr.map(obj => {
+      if (obj.dishId === id) {
+        return {...obj, count: obj.count + 1}
+      }
+      return obj
+    })
+
+    this.setState(prevState => ({
+      count: prevState.count + 1,
+      id,
+      dishesArr: arr,
+    }))
   }
 
-  removeItem = dishId => {
-    const {count} = this.state
+  removeItem = id => {
+    const {count, dishesArr} = this.state
+    const arr = dishesArr.map(obj => {
+      if (obj.dishId === id && obj.count > 0) {
+        return {...obj, count: obj.count - 1}
+      }
+      return obj
+    })
     if (count > 0) {
-      this.setState(prevState => ({count: prevState.count - 1, id: dishId}))
+      this.setState(prevState => ({
+        count: prevState.count - 1,
+        id,
+        dishesArr: arr,
+      }))
     }
   }
 
@@ -224,6 +251,7 @@ class App extends Component {
             <h1 className="nav-heading">{restaurantName}</h1>
             <div className="orders-container">
               <p className="orders">My Orders</p>
+
               <div>
                 <div className="order-count-con">
                   <p className="order-count">{count}</p>
@@ -250,7 +278,6 @@ class App extends Component {
                 dishes={obj}
                 addItem={this.addItem}
                 removeItem={this.removeItem}
-                same={obj.dishId === id}
                 count={count}
               />
             ))}

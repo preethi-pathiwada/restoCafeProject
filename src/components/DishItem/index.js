@@ -4,8 +4,8 @@ import {FiPlus, FiMinus} from 'react-icons/fi'
 import './index.css'
 
 const DishItem = props => {
-  const {dishes, addItem, removeItem, same, count} = props
-  console.log(count)
+  const {dishes, addItem, removeItem, same} = props
+
   const {
     dishId,
     dishName,
@@ -16,6 +16,7 @@ const DishItem = props => {
     dishPrice,
     dishImage,
     addonCat,
+    count,
   } = dishes
 
   const add = () => {
@@ -46,7 +47,7 @@ const DishItem = props => {
                 <button className="add-button" onClick={remove}>
                   -
                 </button>
-                <p className="count">0</p>
+                <p className="count">{count}</p>
                 <button className="add-button" onClick={add}>
                   +
                 </button>

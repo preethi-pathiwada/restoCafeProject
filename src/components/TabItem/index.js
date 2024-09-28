@@ -6,14 +6,16 @@ const TabItem = props => {
     onClickTab(id)
   }
   return (
-    <button
-      className={same ? 'button-active' : 'button-inactive'}
-      onClick={clickTab}
-    >
-      <li className={same ? 'tab-item-active' : 'tab-item-inactive'}>
-        {menuCategory}
-      </li>
-    </button>
+    <li>
+      <button
+        className={same ? 'button-active' : 'button-inactive'}
+        onClick={clickTab}
+      >
+        <p className={same ? 'tab-item-active' : 'tab-item-inactive'}>
+          {menuCategory}
+        </p>
+      </button>
+    </li>
   )
 }
 
