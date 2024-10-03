@@ -58,7 +58,7 @@
 
 .buttons-container {
   background-color: green;
-  height: 24px;
+  height: 22px;
   width: 75px;
   border: none;
   padding: 7px 9px 7px 9px;
@@ -137,18 +137,18 @@
   align-items: flex-end;
 }
 
-.add-to-cart-btn {
-  background-color: green;
+.remove-btn {
+  background-color: red;
+
+  padding: 6px 15px 6px 15px;
   border: none;
-  font-size: 10px;
   color: #ffffff;
-  height: 22px;
-  padding: 5px 15px 5px 15px;
-  border-radius: 14px;
-  display: flex;
+  font-size: 13px;
+  margin-top: 12px;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  margin-left: 14px;
+  align-items: center; */
+  border-radius: 8px;
   cursor: pointer;
 }
 

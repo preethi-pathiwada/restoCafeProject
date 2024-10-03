@@ -4,7 +4,7 @@ import './index.css'
 
 import CartContext from '../../context/CartContext'
 
-const DishItem = props => {
+const CartItem = props => {
   const {dishes, addItem, removeItem} = props
 
   const {
@@ -31,10 +31,22 @@ const DishItem = props => {
   return (
     <CartContext.Consumer>
       {value => {
-        const {cartList, addCartItem} = value
+        const {
+          removeCartItem,
+          incrementCartItemQuantity,
+          decrementCartItemQuantity,
+        } = value
 
-        const addToCart = () => {
-          addCartItem(dishes)
+        const incrementDishCount = () => {
+          incrementCartItemQuantity(dishId)
+        }
+
+        const decrementDishCount = () => {
+          decrementCartItemQuantity(dishId)
+        }
+
+        const deleteCartItem = () => {
+          removeCartItem(dishId)
         }
 
         return (
@@ -56,26 +68,27 @@ const DishItem = props => {
                   {dishAvailability ? (
                     <div className="btn-container">
                       <div className="buttons-container">
-                        <button className="add-button" onClick={remove}>
+                        <button
+                          className="add-button"
+                          onClick={decrementDishCount}
+                        >
                           -
                         </button>
                         <p className="count">{count}</p>
-                        <button className="add-button" onClick={add}>
+                        <button
+                          className="add-button"
+                          onClick={incrementDishCount}
+                        >
                           +
                         </button>
                       </div>
-                      {count > 0 ? (
-                        <div className="add-to-cart-btn" onClick={addToCart}>
-                          ADD TO CART
-                        </div>
-                      ) : null}
                     </div>
                   ) : (
                     <p className="text-red">Not Available</p>
                   )}
-                  {addonCat.length !== 0 ? (
-                    <p className="text">Customizations Available</p>
-                  ) : null}
+                  <button className="remove-btn" onClick={deleteCartItem}>
+                    Remove
+                  </button>
                 </div>
               </div>
 
@@ -91,4 +104,4 @@ const DishItem = props => {
   )
 }
 
-export default DishItem
+export default CartItem

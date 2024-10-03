@@ -1,0 +1,34 @@
+.empty-cart-con {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-cart-img {
+  width: 30%;
+}
+
+.cart-con {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.remove-all-btn {
+  align-self: flex-end;
+  background-color: red;
+  padding: 6px 15px 6px 15px;
+  border: none;
+  color: #ffffff;
+  font-size: 13px;
+  margin-top: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cart-list-con {
+  padding-left: 0;
+  list-style-type: none;
+}

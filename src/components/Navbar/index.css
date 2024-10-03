@@ -1,8 +1,15 @@
 .nav-heading {
-  font-family: 'Roboto';
   font-size: 20px;
   color: black;
   font-weight: 600;
+}
+
+.cart-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 @media all and (min-width: 768px) {
