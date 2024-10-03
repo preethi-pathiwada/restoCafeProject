@@ -40,22 +40,30 @@ const CartRoute = () => {
               </div>
             </>
           )
+        } else {
+          let price = 0
+          for (const obj of cartList) {
+            price += obj.dishPrice
+          }
+          return (
+            <>
+              <Navbar restaurantName={name} />
+              <div className="cart-con">
+                <button className="remove-all-btn" onClick={deleteAllItems}>
+                  Remove All
+                </button>
+                <ul className="cart-list-con">
+                  {cartList.map(obj => (
+                    <CartItem key={obj.dishId} dishes={obj} />
+                  ))}
+                </ul>
+                <h1 className="price-heading">
+                  Total Price: <span className="price">{price}</span>
+                </h1>
+              </div>
+            </>
+          )
         }
-        return (
-          <>
-            <Navbar restaurantName={name} />
-            <div className="cart-con">
-              <button className="remove-all-btn" onClick={deleteAllItems}>
-                Remove All
-              </button>
-              <ul className="cart-list-con">
-                {cartList.map(obj => (
-                  <CartItem key={obj.dishId} dishes={obj} />
-                ))}
-              </ul>
-            </div>
-          </>
-        )
       }}
     </CartContext.Consumer>
   )

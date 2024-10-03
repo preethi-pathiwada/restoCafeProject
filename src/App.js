@@ -43,12 +43,15 @@ class App extends Component {
 
   decrementCartItemQuantity = id => {
     const {cartList} = this.state
-    const arr = cartList.map(obj => {
-      if (obj.dishId === id && obj.count > 0) {
-        return {...obj, count: obj.count - 1}
-      }
-      return obj
-    })
+    const arr = cartList
+      .map(obj => {
+        if (obj.dishId === id && obj.count > 0) {
+          return {...obj, count: obj.count - 1}
+        }
+        return obj
+      })
+      .filter(ob => ob.count > 0)
+
     this.setState({cartList: arr})
   }
 
